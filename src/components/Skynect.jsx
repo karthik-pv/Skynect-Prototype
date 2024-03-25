@@ -14,11 +14,11 @@ const Skynect = () => {
                 <div>
                     <TypeAnimation
                         sequence={[
-                            'Be Limitless.',
+                            'Be Limitless',
                             1000,
-                            'Be Connected.',
+                            'Be Connected',
                             1000,
-                            'Be Skynect.',
+                            'Be Skynect',
                             1000
                         ]}
                         wrapper="span"

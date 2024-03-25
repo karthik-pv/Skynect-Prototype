@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
-import { useLocation } from 'react-router-dom';
+import { useLocation , useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import FollowUsersList from "../components/FollowUsersList";
 import pfpimg from '../assets/empty_pfp.jpg'
 
 const Profile = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const uid = queryParams.get('uid');
     const [user, setUser] = useState({});
@@ -106,6 +107,11 @@ const Profile = () => {
         return docSnap.data();
     };
 
+    const goToEditProfile = () => {
+        navigate(`/editprofile?id=${uid}`)
+    }
+
+
     useEffect(() => {
         getDataFromDb();
     }, [uid]);
@@ -166,6 +172,11 @@ const Profile = () => {
                     <p className="text-lg mb-2">{user.startupOneLine}</p>
                     <p className="text-lg mb-4">{user.startupBrief}</p>
                 </div>
+                {auth.currentUser && auth.currentUser.uid === user.id &&
+                    <div className="p-4">
+                    <button className="bg-blue-500 py-3 px-6 rounded-full mr-4 text-xl" onClick={goToEditProfile}>Edit Profile</button>
+                </div>
+                }
             </div>
             
         </div>

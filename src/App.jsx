@@ -16,6 +16,7 @@ import Home from './pages/Home'
 import Jargon from './pages/Jargon'
 import CreateIncubator from './pages/CreateIncubator'
 import CreateAccelerator from './pages/CreateAccelerator'
+import EditProfile from './pages/EditProfile'
 import { useAdminContext } from './contexts/AdminContext'
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/createincubator' element = {isAdmin ? <CreateIncubator/> : <Home/>}/>
         <Route path='/createaccelerator' element = {isAdmin ? <CreateAccelerator/> : <Home/>}/>
         <Route path='/jargon' element = {<Jargon/>}/>
+        <Route path='/editprofile' element = {<EditProfile/>}/>
       </Routes>
 
   )

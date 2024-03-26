@@ -14,7 +14,7 @@ const CreateVC = () => {
         {
             name: "",
             domain: "",
-            amt: 0,
+            amt: "",
             stage: "",
             desc: "",
             link: "",
@@ -31,7 +31,7 @@ const CreateVC = () => {
         setVCDetails({
             name: "",
             domain: "",
-            amt: 0,
+            amt: "",
             stage: "",
             desc: "",
             link: "",
@@ -69,7 +69,7 @@ const CreateVC = () => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="vcAmt" className="block text-gray-700 font-bold mb-2">Amount:</label>
-                        <input type="number" id="vcAmt" name="amt" value={vcDetails.amt} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                        <input type="text" id="vcAmt" name="amt" value={vcDetails.amt} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </div>
                     <div className="mb-4">
                         <label htmlFor="vcStage" className="block text-gray-700 font-bold mb-2">Stage:</label>

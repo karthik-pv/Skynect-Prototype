@@ -12,7 +12,7 @@ const CreateGrant = () => {
 
     const [grantDetails,setGrantDetails] = useState(
         {
-            amt : 0 ,
+            amt : "" ,
             by : "" ,
             desc : "",
             eligibility : "" ,
@@ -29,7 +29,7 @@ const CreateGrant = () => {
         alert("Grant added")
         setGrantDetails(
             {
-                amt : 0 ,
+                amt : "" ,
                 by : "" ,
                 desc : "",
                 eligibility : "" ,
@@ -61,7 +61,7 @@ const CreateGrant = () => {
                 <form onSubmit={handleSubmit} className="mb-4">
                     <div className="mb-4">
                         <label htmlFor="grantAmount" className="block text-gray-700 font-bold mb-2">Amount:</label>
-                        <input type="number" id="grantAmount" name="amt" value={grantDetails.amt} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                        <input type="text" id="grantAmount" name="amt" value={grantDetails.amt} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </div>
                     <div className="mb-4">
                         <label htmlFor="grantBy" className="block text-gray-700 font-bold mb-2">By:</label>

@@ -114,7 +114,7 @@ const OnBoard = () => {
                                     <select name='phoneCode'>
                                         <option defaultChecked>+91</option>
                                     </select>
-                                    <input type='tel' name='phone' pattern="[789][0-9]{9}" className='text-black outline-none py-1 px-2 w-full tracking-widest' required />
+                                    <input type='tel' name='phone' pattern="[0-9]{10}" className='text-black outline-none py-1 px-2 w-full tracking-widest' required />
                                 </div>
                             </div>
                             <div className='font-inconsolata flex flex-col'>

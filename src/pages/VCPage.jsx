@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation , useNavigate } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Header from '../components/Header';
+import { useAdminContext } from '../contexts/AdminContext';
 
 const VCPage = () => {
+    const navigate = useNavigate()
     const location = useLocation();
     const [vc, setVC] = useState({});
+    const {isAdmin , setIsAdmin} = useAdminContext()
 
     const getDataFromDb = async () => {
         try {
@@ -25,7 +28,12 @@ const VCPage = () => {
         }
     };
 
+    const goToEditVC = () => {
+        navigate(`/editvc?id=${vc.id}`)
+    }
+
     useEffect(() => {
+        setIsAdmin(localStorage.getItem('isAdmin'));
         getDataFromDb();
     });
 
@@ -62,6 +70,11 @@ const VCPage = () => {
                     <p className="text-lg">{vc.desc}</p>
                 </div>
             </div>
+            {isAdmin && 
+            <button onClick={goToEditVC} className="bg-blue-500 py-3 px-6 rounded-full text-xl hover:bg-blue-600 transition-colors duration-300 m-5">
+                Edit
+            </button>     
+            }
         </div>
     );
 };

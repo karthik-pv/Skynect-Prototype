@@ -8,7 +8,7 @@ import {auth , db } from '../firebase'
 import { doc , getDoc } from 'firebase/firestore'
 import { useAdminContext } from '../contexts/AdminContext';
 
-const Home = () => {
+const Login = () => {
 
     const navigate = useNavigate();
 
@@ -26,12 +26,10 @@ const Home = () => {
             console.log(userCredential);
             const q = doc(db , 'skynect' , auth.currentUser.uid)
             const querySnapshot = await getDoc(q)
-            if(querySnapshot.data().admin){
-                setIsAdmin(true)
-            }
-            else{
-                setIsAdmin(false)
-            }
+            alert(querySnapshot.data().admin)
+            const isAdminUser = querySnapshot.data().admin;
+            await setIsAdmin(isAdminUser); // Update isAdmin state
+            await localStorage.setItem("isAdmin", JSON.stringify(isAdminUser)); // Set localStorage item
             navigate('/home');
         } 
         catch (error) {
@@ -68,4 +66,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Login

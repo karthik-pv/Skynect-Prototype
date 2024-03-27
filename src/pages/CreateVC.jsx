@@ -48,6 +48,7 @@ const CreateVC = () => {
     };
 
     useEffect(()=>{
+        setIsAdmin(JSON.parse(localStorage.getItem("isAdmin")));
         if(!isAdmin){
             navigate('/home')
         }

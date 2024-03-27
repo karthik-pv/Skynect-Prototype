@@ -25,8 +25,13 @@ const Header = () => {
         navigate('/jargon')
     }
 
+    const GoToDevs = () => {
+        navigate('/proddevs')
+    }
+
     const onSignout = () => {
         setIsAdmin(false);
+        localStorage.setItem('isAdmin',JSON.stringify(isAdmin));
         auth.signOut().then(()=>{
             navigate('/')
         })
@@ -51,6 +56,9 @@ const Header = () => {
                         </td>
                         <td>
                             <button className="text-xl font-bold text-white bg-black py-2 px-4 rounded-md" onClick={GoToJargon}>Jargon</button>
+                        </td>
+                        <td>
+                            <button className="text-xl font-bold text-white bg-black py-2 px-4 rounded-md" onClick={GoToDevs}>Devs</button>
                         </td>
                         <td>
                             <button className="text-xl font-bold text-white bg-black py-2 px-4 rounded-md" onClick={onSignout}>Sign Out</button>

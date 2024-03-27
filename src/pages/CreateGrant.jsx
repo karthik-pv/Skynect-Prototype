@@ -48,6 +48,7 @@ const CreateGrant = () => {
     };
 
     useEffect(()=>{
+        setIsAdmin(localStorage.getItem("isAdmin"))
         if(!isAdmin){
             navigate('/home')
         }

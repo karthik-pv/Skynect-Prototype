@@ -14,8 +14,8 @@ const GrantTile = ({ grantObj }) => {
       onClick={goToGrant}
     >
       <div>
-        <h2 className="text-xl font-bold">Amount: {grantObj.amt}</h2>
-        <p className="text-lg">Grant By: {grantObj.by}</p>
+        <h2 className="text-xl font-bold">Amount: <span className="font-normal pl-5">{grantObj.amt}</span></h2>
+        <p className="text-lg font-bold">Grant By: <span className="font-normal pl-5">{grantObj.by}</span></p>
       </div>
       <div className="mt-4">
         <h3 className="text-lg font-semibold">Eligibility:</h3>

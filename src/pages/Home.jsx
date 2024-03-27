@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from '../components/Header';
 import { useAdminContext } from "../contexts/AdminContext";
@@ -6,6 +6,13 @@ import { useAdminContext } from "../contexts/AdminContext";
 const Home = () => {
 
     const { isAdmin , setIsAdmin } = useAdminContext();
+
+    useEffect(()=> {
+        const setPrivileges = async() => {
+            await setIsAdmin(JSON.parse(localStorage.getItem("isAdmin")));
+        }
+        setPrivileges()
+    },[])
 
     return(
         <div className="bg-black text-white min-h-screen flex flex-col items-center py-8 px-4">

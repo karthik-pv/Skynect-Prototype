@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs , where , query} from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import Header from '../components/Header';
-import StartupDetailTile from "../components/StartupDetailTile";
+import ProdDevTile from "../components/ProdDevTile";
 
 const UserList = () => {
   const currentUser = auth.currentUser;
@@ -18,7 +18,7 @@ const UserList = () => {
 
   const fetchData = async() => {
     try{
-      const q = query(collection(db, 'skynect'), where('type', '==' , 'startup'));
+      const q = query(collection(db, 'skynect'), where('type', '==' , 'productdev'));
       const querySnapshot = await getDocs(q);
       const data = querySnapshot.docs.map(doc => doc.data());
       setAllUsers(data)
@@ -33,7 +33,6 @@ const UserList = () => {
   const filterDataByPrefix = (prefix) => {
     const filteredData = allUsers.filter((doc) => 
       doc.name.toLowerCase().includes(prefix.toLowerCase()) || 
-      doc.startupName.toLowerCase().includes(prefix.toLowerCase()) || 
       doc.role.toLowerCase().includes(prefix.toLowerCase())
     );
     setFilteredUsers(filteredData);
@@ -65,7 +64,7 @@ const UserList = () => {
             {filteredUsers.map((doc) => (
               currentUser.uid !== doc.id && (
                 <li key={doc.id} className="mb-4">
-                  <StartupDetailTile userObj={doc} />
+                  <ProdDevTile userObj={doc} />
                 </li>
               )
             ))}

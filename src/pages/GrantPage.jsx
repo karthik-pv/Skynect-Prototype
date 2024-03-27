@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useLocation , useNavigate } from 'react-router-dom';
+import { collection, getDocs, query, where , deleteDoc} from 'firebase/firestore';
 import { db } from '../firebase';
 import Header from '../components/Header';
+import { useAdminContext } from '../contexts/AdminContext';
 
 const GrantPage = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [grant, setGrant] = useState({});
+    const { isAdmin, setIsAdmin } = useAdminContext();
+
+    const goToEditgrant = () =>{
+        const queryParams = new URLSearchParams(location.search);
+        const grantID = queryParams.get('id');
+        navigate(`/editgrant?id=${grantID}`);
+    }
 
     const getDataFromDb = async () => {
         try {
@@ -27,6 +36,7 @@ const GrantPage = () => {
     };
 
     useEffect(() => {
+        setIsAdmin(JSON.parse(localStorage.getItem("isAdmin")))
         getDataFromDb();
     }, []);
 
@@ -59,6 +69,13 @@ const GrantPage = () => {
                     <p className="text-lg">{grant.desc}</p>
                 </div>
             </div>
+            {isAdmin && 
+                <div className='flex flex-row p-3'>
+                    <button onClick={goToEditgrant} className="bg-blue-500 py-3 px-6 rounded-full text-xl hover:bg-blue-600 transition-colors duration-300 mr-5">
+                        Edit
+                    </button>
+                </div>
+            }
         </div>
     );
 };

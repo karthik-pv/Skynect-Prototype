@@ -16,12 +16,14 @@ const EditProfile = () => {
         password: '',
         phoneCode: '',
         phone: '',
+        type:'',
         startupName: '',
         startupOneLine: '',
         startupBrief: '',
         role: '',
         selfOneLine: '',
-        selfBrief: ''
+        selfBrief: '',
+        contact:''
     });
 
 
@@ -36,8 +38,35 @@ const EditProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await updateDoc(doc(db, 'skynect', uid), formDetails);
-            console.log('Document successfully updated!');
+            if(formDetails.type==='startup'){
+                await updateDoc(doc(db, 'skynect', uid), {
+                    name: formDetails.name,
+                    email: formDetails.email,
+                    phoneCode: formDetails.phoneCode,
+                    phone: formDetails.phone,
+                    type: formDetails.type,
+                    startupName: formDetails.startupName,
+                    startupOneLine: formDetails.startupOneLine,
+                    startupBrief: formDetails.startupBrief,
+                    role: formDetails.role,
+                    selfOneLine: formDetails.selfOneLine,
+                    selfBrief: formDetails.selfBrief
+                });
+            }
+            else{
+                await updateDoc(doc(db, 'skynect', uid), {
+                    name: formDetails.name,
+                    email: formDetails.email,
+                    phoneCode: formDetails.phoneCode,
+                    phone: formDetails.phone,
+                    type: formDetails.type,
+                    role: formDetails.role,
+                    selfOneLine: formDetails.selfOneLine,
+                    selfBrief: formDetails.selfBrief,
+                    contact: formDetails.contact
+                });
+            }
+            alert('Profile edited');
         } catch (error) {
             console.error('Error updating document:', error);
         }
@@ -79,6 +108,8 @@ const EditProfile = () => {
                         <label htmlFor="phone" className="font-bold">Phone:</label>
                         <input type="text" id="phone" name="phone" value={formDetails.phone} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
                     </div>
+                    {formDetails.type === 'startup' &&
+                    <>
                     <div className="mb-4">
                         <label htmlFor="startupName" className="font-bold">Startup Name:</label>
                         <input type="text" id="startupName" name="startupName" value={formDetails.startupName} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
@@ -91,6 +122,8 @@ const EditProfile = () => {
                         <label htmlFor="startupBrief" className="font-bold">Startup Brief:</label>
                         <textarea id="startupBrief" name="startupBrief" value={formDetails.startupBrief} onChange={handleChange} className="w-full px-4 py-2 border rounded-md"></textarea>
                     </div>
+                    </>
+                    }
                     <div className="mb-4">
                         <label htmlFor="role" className="font-bold">Role:</label>
                         <input type="text" id="role" name="role" value={formDetails.role} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
@@ -103,6 +136,13 @@ const EditProfile = () => {
                         <label htmlFor="selfBrief" className="font-bold">Self Brief:</label>
                         <textarea id="selfBrief" name="selfBrief" value={formDetails.selfBrief} onChange={handleChange} className="w-full px-4 py-2 border rounded-md"></textarea>
                     </div>
+                    {
+                        formDetails.type ==='productdev' &&
+                        <div className="mb-4">
+                            <label htmlFor="contact" className="font-bold">Github/LinkedIn:</label>
+                            <input type="text" id="contact" name="contact" value={formDetails.contact} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                        </div>
+                    }
                     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save Changes</button>
                 </form>
             </div>

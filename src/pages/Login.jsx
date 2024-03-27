@@ -26,10 +26,9 @@ const Login = () => {
             console.log(userCredential);
             const q = doc(db , 'skynect' , auth.currentUser.uid)
             const querySnapshot = await getDoc(q)
-            alert(querySnapshot.data().admin)
             const isAdminUser = querySnapshot.data().admin;
-            await setIsAdmin(isAdminUser); // Update isAdmin state
-            await localStorage.setItem("isAdmin", JSON.stringify(isAdminUser)); // Set localStorage item
+            await setIsAdmin(isAdminUser);
+            await localStorage.setItem("isAdmin", JSON.stringify(isAdminUser)); 
             navigate('/home');
         } 
         catch (error) {

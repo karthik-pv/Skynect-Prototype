@@ -75,7 +75,8 @@ const OnBoard = () => {
             contact: formDetails.contact
             });
         }
-
+        await localStorage.setItem("isAdmin", JSON.stringify(false)); // Set localStorage item
+        navigate('/home');
       navigate('/home');
 
     } catch (error) {

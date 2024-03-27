@@ -118,8 +118,6 @@
                             <p className="text-4xl font-bold pb-2">{user.name}</p>
                             {user.type==="startup" &&
                             <p className="text-2xl font-bold pb-2">{user.startupName}</p>}
-                            {user.type==="productdev" &&
-                            <p className="text-2xl font-bold pb-2">{user.contact}</p>}
                             <p className="text-xl">{user.role}</p>
                             <p className="text-xl">{user.phoneCode}-{user.phone}</p>
                             <p className="text-xl">{user.email}</p>
@@ -171,8 +169,9 @@
                         <p className="text-lg mb-4">{user.startupBrief}</p>
                     </div>
                     }
-                       
-                    {auth.currentUser && auth.currentUser.uid === user.id && user.type==='startup'&&
+                    {user.type==="productdev" &&
+                            <p className="text-2xl font-bold pb-2">{user.contact}</p>} 
+                    {auth.currentUser && auth.currentUser.uid === user.id &&
                         <div className="p-4">
                         <button className="bg-blue-500 py-3 px-6 rounded-full mr-4 text-xl" onClick={goToEditProfile}>Edit Profile</button>
                     </div>

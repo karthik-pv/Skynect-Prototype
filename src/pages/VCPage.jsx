@@ -33,7 +33,7 @@ const VCPage = () => {
     }
 
     useEffect(() => {
-        setIsAdmin(localStorage.getItem('isAdmin'));
+        setIsAdmin(JSON.parse(localStorage.getItem('isAdmin')));
         getDataFromDb();
     });
 

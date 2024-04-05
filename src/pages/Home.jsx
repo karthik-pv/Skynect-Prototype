@@ -30,6 +30,9 @@ const Home = () => {
                     </Link>
                     <Link to="/createaccelerator" className="bg-blue-500 text-black text-2xl text-center font-bold p-4 m-2 rounded-lg shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
                         Add Accelerators
+                    </Link> 
+                    <Link to="/createAngelInv" className="bg-blue-500 text-black text-2xl text-center font-bold p-4 m-2 rounded-lg shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
+                        Add Angel Investors
                     </Link>
                 </div>
             }
@@ -45,6 +48,9 @@ const Home = () => {
                 </Link>
                 <Link to="/vclist" className="bg-white text-black text-2xl text-center font-bold p-4 m-2 rounded-lg shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
                     Venture Capitalists
+                </Link>
+                <Link to="/angelInvList" className="bg-white text-black text-2xl text-center font-bold p-4 m-2 rounded-lg shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
+                    Angel Investors
                 </Link>
             </div>
         </div>

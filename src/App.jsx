@@ -22,6 +22,10 @@ import EditGrant from './pages/EditGrant'
 import EditVC from './pages/EditVC'
 import EditAccelerator from './pages/EditAccelerator'
 import EditIncubator from './pages/EditIncubator'
+import AngelInv from './pages/AngelInvandNet'
+import AngelInvPage from './pages/AngelInvandNetPage'
+import CreateAngelInv from './pages/CreateAngelInv'
+import EditAngelInvestor from './pages/EditAngelInv'
 import { useAdminContext } from './contexts/AdminContext'
 
 const App = () => {
@@ -53,6 +57,10 @@ const App = () => {
         <Route path='/editvc' element = {<EditVC/>}/>
         <Route path='/editaccelerator' element = {<EditAccelerator/>}/>
         <Route path='/editincubator' element = {<EditIncubator/>}/>
+        <Route path='/angelInvList' element = {<AngelInv/>} />
+        <Route path='/angelInv' element = {<AngelInvPage/>} />
+        <Route path='/createAngelInv' element = {isAdmin ? <CreateAngelInv/> : <Home/>} />
+        <Route path ='/editAngelInv' element = {isAdmin ? <EditAngelInvestor/> : <Home/>}/>
       </Routes>
 
   )

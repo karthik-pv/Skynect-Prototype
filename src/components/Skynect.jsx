@@ -40,7 +40,7 @@ const Skynect = () => {
                         :
                         <Link to='/onboard'>
                             <button className='font-inconsolata flex items-center bg-black text-white border-2 py-1 px-8 hover:bg-white hover:text-black'>
-                                Get On Board
+                                Register
                                 <MdOutlineKeyboardArrowRight size={25} />
                             </button>
                         </Link>

@@ -100,7 +100,7 @@
         };
 
         const goToEditProfile = () => {
-            navigate(`/editprofile?id=${uid}`)
+            navigate(`/editprofile`)
         }
 
 

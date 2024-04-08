@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
-import { db } from '../firebase';
+import { useNavigate } from "react-router-dom";
+import { db , auth } from '../firebase';
 import { doc , getDoc, updateDoc } from 'firebase/firestore'
 
 const EditProfile = () => {
     
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const uid = queryParams.get('id');
-    
+    const uid = auth.currentUser.uid;
+    const navigate = useNavigate();
     const [formDetails, setFormDetails] = useState({
         name: '',
         email: '',
@@ -74,6 +72,9 @@ const EditProfile = () => {
 
     useEffect(() => {
         const fetchUserProfile = async () => {
+            if(uid!==auth.currentUser.uid) {
+                navigate('/home');
+            }
             try {
                 const query = doc(db , 'skynect' , uid)
                 const querySnapshot = await getDoc(query); 
@@ -84,7 +85,7 @@ const EditProfile = () => {
             }
         };
         fetchUserProfile();
-    }, [uid]);
+    },[uid]);
 
 
     return (

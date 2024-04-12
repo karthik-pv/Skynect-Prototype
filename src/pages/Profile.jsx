@@ -123,6 +123,12 @@
                             <p className="text-xl">{user.email}</p>
                         </div>
                     </div>
+                    {
+                        user.type==="productdev" && user.linkedIn!==""&&
+                        <a href={user.linkedIn} target="_blank">
+                            <button className="bg-blue-500 py-3 px-6 rounded-full mr-4 text-xl"> My LinkedIn</button>
+                        </a>
+                    }
                     {auth.currentUser && auth.currentUser.uid === user.id && (
                         <div className="p-4">
                             <div className="flex flex-row items-center mb-4">
@@ -144,12 +150,12 @@
                         <>
                             {console.log(user.followers , auth.currentUser.uid)}
                             {!user.followers?.includes(auth.currentUser.uid) &&
-                                <div className="p-4">
+                                <div className="p-10">
                                     <button className="bg-green-500 py-3 px-6 rounded-full mr-4 text-xl" onClick={onFollow}>Follow</button>
                                 </div>
                             }
                             {user.followers?.includes(auth.currentUser.uid) &&
-                                <div className="p-4">
+                                <div className="p-10">
                                     <button className="bg-red-500 py-3 px-6 rounded-full mr-4 text-xl" onClick={onUnfollow}>Unfollow</button>
                                 </div>
                             }
@@ -169,8 +175,14 @@
                         <p className="text-lg mb-4">{user.startupBrief}</p>
                     </div>
                     }
-                    {user.type==="productdev" &&
-                            <p className="text-2xl font-bold pb-2">{user.contact}</p>} 
+                    {user.type==="productdev" && user.github!=="" &&
+                        <div>
+                            <p className="text-2xl font-bold pb-3">To know more about my work</p>
+                            <a href={user.github} target="_blank">
+                                <button className="bg-green-500 py-3 px-6 rounded-full mr-4 text-xl">Github</button>
+                            </a>
+                        </div>
+                    } 
                     {auth.currentUser && auth.currentUser.uid === user.id &&
                         <div className="p-4">
                         <button className="bg-blue-500 py-3 px-6 rounded-full mr-4 text-xl" onClick={goToEditProfile}>Edit Profile</button>

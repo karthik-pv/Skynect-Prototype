@@ -61,7 +61,8 @@ const EditProfile = () => {
                     role: formDetails.role,
                     selfOneLine: formDetails.selfOneLine,
                     selfBrief: formDetails.selfBrief,
-                    contact: formDetails.contact
+                    linkedIn:formDetails.linkedIn,
+                    github:formDetails.github,
                 });
             }
             alert('Profile edited');
@@ -139,10 +140,16 @@ const EditProfile = () => {
                     </div>
                     {
                         formDetails.type ==='productdev' &&
-                        <div className="mb-4">
-                            <label htmlFor="contact" className="font-bold">Github/LinkedIn:</label>
-                            <input type="text" id="contact" name="contact" value={formDetails.contact} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
-                        </div>
+                        <>
+                            <div className="mb-4">
+                                <label htmlFor="linkedIn" className="font-bold">LinkedIn:</label>
+                                <input type="url" id="linkedIn" name="linkedIn" value={formDetails.linkedIn} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="github" className="font-bold">Github:</label>
+                                <input type="url" id="github" name="github" value={formDetails.github} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                            </div>
+                        </>
                     }
                     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save Changes</button>
                 </form>

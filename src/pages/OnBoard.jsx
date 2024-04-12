@@ -72,7 +72,8 @@ const OnBoard = () => {
             following : [],
             followers : [],
             admin : false,
-            contact: formDetails.contact
+            linkedIn : formDetails.linkedIn,
+            github : formDetails.github
             });
         }
         await localStorage.setItem("isAdmin", JSON.stringify(false));
@@ -145,7 +146,8 @@ const OnBoard = () => {
             role: e.target.role.value,
             selfOneLine: e.target.selfOneLine.value,
             selfBrief: e.target.selfBrief.value,
-            contact: e.target.contact.value
+            linkedIn: e.target.LinkedIn.value,
+            github: e.target.Github.value
         }));
         setStage(3);
     }
@@ -298,8 +300,12 @@ const OnBoard = () => {
                             <textarea name='selfBrief' className='text-black border border-black outline-none py-1 px-2 w-full tracking-widest' required />
                         </div>
                         <div className='font-inconsolata flex flex-col'>
-                            <label htmlFor='contact' className='font-bold'>LinkedIn / Github</label>
-                            <textarea name='contact' className='text-black border border-black outline-none py-1 px-2 w-full tracking-widest' required />
+                            <label htmlFor='LinkedIn' className='font-bold'>LinkedIn</label>
+                            <input type='url' name='LinkedIn' className='text-black border border-black outline-none py-1 px-2 w-full tracking-widest' />
+                        </div>
+                        <div className='font-inconsolata flex flex-col'>
+                            <label htmlFor='Github' className='font-bold'>Github</label>
+                            <input type='url' name='Github' className='text-black border border-black outline-none py-1 px-2 w-full tracking-widest' />
                         </div>
                         <div>
                         <button className='font-inconsolata flex items-center bg-black text-white py-1 px-8 hover:underline'>

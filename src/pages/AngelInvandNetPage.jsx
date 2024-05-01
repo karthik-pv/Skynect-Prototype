@@ -46,19 +46,11 @@ const AngelInvestorPage = () => {
           <h2 className="text-2xl mb-2 font-bold">Name:</h2>
           <p className="text-lg">{investor.name}</p>
         </div>
-        <div className="mb-8">
-          <h2 className="text-2xl mb-2 font-bold">Domain:</h2>
-          <p className="text-lg">{investor.domain}</p>
+        <div>
+          <h2 className="text-2xl mb-2 font-bold">Email:</h2>
+          <p className="text-lg">{investor.email}</p>
         </div>
-        <div className="mb-8">
-          <h2 className="text-2xl mb-2 font-bold">Amount:</h2>
-          <p className="text-lg">{investor.amt}</p>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-2xl mb-2 font-bold">Stage of Investment:</h2>
-          <p className="text-lg">{investor.stage}</p>
-        </div>
-        <div className="mb-8 items-center">
+        <div className="mt-8 mb-8 items-center">
           <a href={investor.link} target='_blank'>
             <button className="bg-green-500 py-3 px-6 rounded-full text-xl hover:bg-green-600 transition-colors duration-300">
               Take me to Investor Page

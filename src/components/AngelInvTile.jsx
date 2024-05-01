@@ -15,11 +15,10 @@ const AngelInvestorTile = ({ investorObj }) => {
      onClick={gotoInvestor}
    >
      <div>
-       <h2 className="text-xl font-bold pb-3 text-center">{investorObj.name}</h2>
-       <p className="text-lg">Domain : <span className='font-semibold'>{investorObj.domain}</span></p>
+       <h2 className="text-3xl font-bold pb-3 text-center">{investorObj.name}</h2>
      </div>
-     <div className="mt-4">
-       <h3 className="text-lg">Stage of Investment : <span className='font-semibold'>{investorObj.stage}</span></h3>
+     <div>
+        <p className="text-center">{investorObj.desc}</p>
      </div>
    </div>
  );

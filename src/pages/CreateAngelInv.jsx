@@ -13,9 +13,7 @@ const CreateAngelInvestor = () => {
   const [investorDetails, setInvestorDetails] = useState(
     {
       name: "",
-      domain: "",
-      amt:"",
-      stage: "",
+      email:"",
       desc: "",
       link: "",
       id: ""
@@ -30,9 +28,7 @@ const CreateAngelInvestor = () => {
     alert("Angel Investor Added")
     setInvestorDetails({
       name: "",
-      domain: "",
-      amt:"",
-      stage: "",
+      email:"",
       desc: "",
       link: "",
       id: ""
@@ -65,16 +61,8 @@ const CreateAngelInvestor = () => {
             <input type="text" id="investorName" name="name" value={investorDetails.name} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
           </div>
           <div className="mb-4">
-            <label htmlFor="investorDomain" className="block text-gray-700 font-bold mb-2">Domain:</label>
-            <input type="text" id="investorDomain" name="domain" value={investorDetails.domain} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-          </div>
-          <div className="mb-4">
-            <label htmlFor="amt" className="block text-gray-700 font-bold mb-2">Amt:</label>
-            <input type="text" id="amt" name="amt" value={investorDetails.amt} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-          </div>
-          <div className="mb-4">
-            <label htmlFor="investorInterest" className="block text-gray-700 font-bold mb-2">Stage:</label>
-            <input type="text" id="investorInterest" name="stage" value={investorDetails.stage} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+          <label htmlFor="investorEmail" className="block text-gray-700 font-bold mb-2">Email:</label>
+            <input type="email" id="investorEmail" name="email" value={investorDetails.email} onChange={handleChange} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
           </div>
           <div className="mb-4">
             <label htmlFor="investorDesc" className="block text-gray-700 font-bold mb-2">Description:</label>

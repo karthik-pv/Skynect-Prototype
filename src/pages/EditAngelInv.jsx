@@ -14,9 +14,7 @@ const EditAngelInvestor = () => {
 
     const [investorDetails, setInvestorDetails] = useState({
         name: '',
-        domain: '',
-        amt: '',
-        stage: '',
+        email:'',
         desc: '',
         link: '',
         id: '',
@@ -46,9 +44,7 @@ const EditAngelInvestor = () => {
             alert('Investor details updated successfully');
             setInvestorDetails({
                 name: '',
-                domain: '',
-                amt: '',
-                stage: '',
+                email:'',
                 desc: '',
                 link: '',
                 id: '',
@@ -60,7 +56,7 @@ const EditAngelInvestor = () => {
 
     const handleDelete = async () => {
         try {
-            await deleteDoc(doc(db, 'AngelInvestors', investorID));
+            await deleteDoc(doc(db, 'angelInvestors', investorID));
             alert('Investor deleted successfully');
         } catch (error) {
             console.error('Error deleting investor:', error);
@@ -93,16 +89,8 @@ const EditAngelInvestor = () => {
                         <input type="text" name="name" value={investorDetails.name} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Domain:</label>
-                        <input type="text" name="domain" value={investorDetails.domain} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Amount:</label>
-                        <input type="text" name="amt" value={investorDetails.amt} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Stage:</label>
-                        <input type="text" name="stage" value={investorDetails.stage} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
+                        <label className="block text-gray-700 font-bold mb-2">Email:</label>
+                        <input type="email" name="email" value={investorDetails.email} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">Description:</label>
